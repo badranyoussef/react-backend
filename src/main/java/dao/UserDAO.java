@@ -67,8 +67,13 @@ public class UserDAO implements iDAO<User, User> {
     }
 
     @Override
-    public User update(User DTO) {
-        return null;
+    public User update(User user) {
+        try (EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            User updatedUser = em.merge(user);
+            em.getTransaction().commit();
+            return updatedUser;
+        }
     }
 
     @Override
