@@ -17,7 +17,7 @@ public class Main {
 
         //1.1 creating java-project using javalin framework
         Application carShopApp = Application.getInstance();
-        carShopApp.startServer(7070);
+        carShopApp.startServer(7075);
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
