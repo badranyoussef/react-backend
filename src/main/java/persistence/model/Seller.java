@@ -24,6 +24,14 @@ public class Seller {
     private String firstName;
     private String lastName;
 
+    private String email;
+
+    private int phone;
+    private String city;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seller", fetch = FetchType.EAGER)
+    Set<Car> cars = new HashSet<>();
+
     public Seller(String firstName, String lastName, String email, int phone, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,14 +39,6 @@ public class Seller {
         this.phone = phone;
         this.city = city;
     }
-
-    private String email;
-    private int phone;
-    private String city;
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seller", fetch = FetchType.EAGER)
-    Set<Car> cars = new HashSet<>();
 
     public void addCar(Car car){
         if(car != null){
