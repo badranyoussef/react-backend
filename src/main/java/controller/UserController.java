@@ -74,6 +74,7 @@ public class UserController {
         return ctx ->{
             int id = Integer.parseInt(ctx.pathParam("id"));
             User user = ctx.bodyAsClass(User.class);
+            user.setId(id);
             if(user != null){
                 User updatedUser = (User) userDAO.update(user);
                 ctx.json(new UserDTO(updatedUser));

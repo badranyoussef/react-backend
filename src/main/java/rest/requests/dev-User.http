@@ -16,10 +16,15 @@ POST http://localhost:7070/carshop/api/users
 }
 
 ### Update a user
-PUT http://localhost:7070/api/users/1
+PUT http://159.223.19.33:7075/api/users/2
 
 {
+"name": "Thomas",
+"email": "badran@youssef.dk",
+"password": "1234qwer",
+"phone": 30117195
 }
+
 
 ### Delete a user
 DELETE http://localhost:7070/carshop/api/users/1

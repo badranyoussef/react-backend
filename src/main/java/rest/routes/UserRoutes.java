@@ -57,7 +57,7 @@ public class UserRoutes {
                     , Role.ANYONE
             );
 
-            // update car
+            // update user
             put("/{id}", ctx ->
                 {
                     try {
@@ -66,7 +66,7 @@ public class UserRoutes {
                         ctx.status(e.getStatusCode()).result(e.getMessage());
                     }
                 }
-                    , Role.ANYONE
+                , Role.ANYONE
             );
 
         });
