@@ -1,81 +1,38 @@
 package rest.routes;
 
-import controller.HealthProductController;
-import controller.StorageController;
+import controller.CarController;
 import io.javalin.apibuilder.EndpointGroup;
 import static io.javalin.apibuilder.ApiBuilder.*;
 import static io.javalin.apibuilder.ApiBuilder.get;
 
-public class Route {
+public class CarRoute {
 
-    HealthProductController healthProductController = new HealthProductController();
-    StorageController storageController = new StorageController();
+    CarController carController = new CarController();
 
-    //1.4 & 1.4.2 develop rest API
-    public EndpointGroup getHealthRoutes() {
-        return () -> path("/healthproducts", () -> {
+    //1.4.2 rest API
+    public EndpointGroup getCarRoutes() {
+        return () -> path("/cars", () -> {
 
-//        frem for at implementere exceptions ved hver endpoint brnytter jeg globale exceptions som sætte op i javalin konfigurationen
-//
-//            post("/initiate", ctx ->
-//            {
-//                try {
-//                    healthProductController.initiateProducts().handle(ctx);
-//                } catch (APIException e) {
-//                    ctx.json(Map.of(
-//                            "status", e.getStatusCode(),
-//                            "message", "API ERROR " + e.getMessage(),
-//                            "timestamp", e.getTimeStamp().toString()
-//                    ));
-//                }
-//            });
+            // get all cars
+            get("/", ctx -> carController.getAll().handle(ctx), Role.ADMIN);
 
-            // initiate all product
-            post("/initiate", ctx -> healthProductController.initiateProducts().handle(ctx));
+            // get a car by id
+            get("/{id}", ctx -> carController.getById().handle(ctx), Role.ANYONE);
 
-            // get all products
-            get("/", ctx -> healthProductController.getAll().handle(ctx));
+            // get cars by seller
+            get("/sellers/{id}", ctx -> carController.getCarsBySeller().handle(ctx), Role.ANYONE);
 
-            // get a product by id
-            get("/{id}", ctx -> healthProductController.getById().handle(ctx));
+            // create a car
+            post("/", ctx -> carController.create().handle(ctx), Role.ANYONE);
 
-            // create a product
-            post("/", ctx -> healthProductController.create().handle(ctx));
+            // update car
+            put("/{id}", ctx -> carController.update().handle(ctx), Role.ANYONE);
 
-            // update product
-            put("/{id}", ctx -> healthProductController.update().handle(ctx));
+            // add car to seller
+            put("/add_to_seller/{sellerid}/{carid}", ctx -> carController.addCarToSeller().handle(ctx), Role.ANYONE);
 
-            // delete product by id
-            delete("/{id}", ctx -> healthProductController.delete().handle(ctx));
-        });
-    }
-
-    public EndpointGroup getStorageRoutes() {
-        return () -> path("/storages", () -> {
-
-            // initiate all product
-            post("/initiate", ctx -> storageController.initiateProducts().handle(ctx));
-
-            // get all products
-            get("/", ctx -> storageController.getAll().handle(ctx));
-
-            // get a product by id
-            get("/{id}", ctx -> storageController.getById().handle(ctx));
-
-            // get products by storage shelf
-            get("/storage_shelf/{id}", ctx -> storageController.getProductsByStorageShelf().handle(ctx));
-
-            // create a product
-            post("/", ctx -> storageController.create().handle(ctx));
-
-            // update product
-            put("/{id}", ctx -> storageController.update().handle(ctx));
-
-            // add product to storage
-            put("/{id_storage}/{id_product}", ctx -> storageController.addProductToStorage().handle(ctx));
-
-            // delete product by id
-            delete("/{id}", ctx -> storageController.delete().handle(ctx));
+            // delete car by id
+            delete("/{id}", ctx -> carController.delete().handle(ctx), Role.ANYONE);
         });
     }
 }

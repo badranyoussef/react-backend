@@ -50,37 +50,12 @@ public class User {
         return BCrypt.checkpw(pw, this.password);
     }
 
-    @JsonIgnore
-    //Bi-directional
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "registrations",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "event_id")
-    )
-    private Set<Event> events = new HashSet<>();
-
-    public void addEvent(Event event) {
-        if (event != null) {
-            events.add(event);
-            event.getUsers().add(this);
-        }
-    }
-
-    public void removeEvent(Event event) {
-        if (event != null) {
-            events.remove(event);
-            event.getUsers().remove(this);
-        }
-    }
-
     public void addRole(Role role) {
         if (role != null) {
             roles.add(role);
             role.getUsers().add(this);
         }
     }
-
     public Set<String> getRolesAsStrings() {
         Set<String> roleStringSet = new HashSet<>();
         this.getRoles().forEach(role -> roleStringSet.add(role.getRolename()));

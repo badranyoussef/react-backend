@@ -1,22 +1,24 @@
-package daos;
+package dao;
 
-import dtos.UserDTO;
-import io.javalin.validation.ValidationException;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.TypedQuery;
+import persistence.config.HibernateConfig;
 import persistence.model.User;
 
-public class AuthDAO extends AbstractDAO {
+public class AuthDAO {
     private static EntityManagerFactory emf;
     private static AuthDAO instance;
-    public AuthDAO(EntityManagerFactory emf, Class entityClass) {
-        super(emf, entityClass);
+
+
+    public AuthDAO(EntityManagerFactory _emf){
+        this.emf = _emf;
     }
+
     public static AuthDAO getInstance(EntityManagerFactory _emf) {
         if(instance == null){
             emf = _emf;
-            instance = new AuthDAO(emf, User.class);
+            instance = new AuthDAO(emf);
         }
         return instance;
     }

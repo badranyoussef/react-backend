@@ -2,12 +2,15 @@ package persistence.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
+import org.eclipse.jetty.server.Authentication;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import persistence.model.Product;
-import persistence.model.Storage;
+import persistence.model.Car;
+import persistence.model.Role;
+import persistence.model.Seller;
+import persistence.model.User;
 
 import java.util.Properties;
 
@@ -78,8 +81,10 @@ public class HibernateConfig {
     private static void getAnnotationConfiguration(Configuration configuration) {
         // add annotated classes
         // configuration.addAnnotatedClass(<YOUR ENTITY>.class);
-        configuration.addAnnotatedClass(Product.class);
-        configuration.addAnnotatedClass(Storage.class);
+        configuration.addAnnotatedClass(Car.class);
+        configuration.addAnnotatedClass(Seller.class);
+        configuration.addAnnotatedClass(Role.class);
+        configuration.addAnnotatedClass(User.class);
     }
 
     //Singleton princippet

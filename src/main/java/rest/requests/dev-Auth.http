@@ -2,15 +2,15 @@
 POST http://localhost:7070/carshop/api/auth/login
 
 {
-"email":"hans@mail.com",
-"password":"password"
+"email":"badran@youssef.dk",
+"password":"1234qwer"
 }
 
 ### Register new user
 POST http://localhost:7070/carshop/api/auth/register
 
 {
-"name": "youssef",
+"name": "hans",
 "email": "badran@youssef.dk",
 "password": "1234qwer",
 "phone": 30117195

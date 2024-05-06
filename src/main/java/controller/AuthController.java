@@ -1,13 +1,12 @@
-package controllers;
+package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import daos.AuthDAO;
-import daos.UserDAO;
+import dao.AuthDAO;
+import dao.UserDAO;
 import dtos.TokenDTO;
 import dtos.UserDTO;
-import com.nimbusds.jose.*;
-
+import exceptions.APIException;
 import io.javalin.http.Handler;
 import io.javalin.http.HttpStatus;
 import io.javalin.validation.ValidationException;
@@ -15,10 +14,16 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import persistence.model.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AuthController {
+
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static String timestamp = dateFormat.format(new Date());
+
     private static ObjectMapper om = new ObjectMapper();
     public static Handler login(AuthDAO authDAO) {
         return ctx -> {
@@ -28,9 +33,11 @@ public class AuthController {
                 User verifiedUser = authDAO.verifyUser(user.getEmail(), user.getPassword());
                 String token = TokenController.createToken(new UserDTO(verifiedUser));
                 ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail()));
-            } catch (EntityNotFoundException | ValidationException e){
-                ctx.status(401);
-                ctx.json(node.put("msg", e.getMessage()));
+            }catch (APIException e){
+                throw new APIException(e.getStatusCode(), "Wrong password", e.getTimeStamp());
+//            } catch (EntityNotFoundException | ValidationException e){
+//                ctx.status(401);
+//                ctx.json(node.put("msg", e.getMessage()));
             }
         };
     }

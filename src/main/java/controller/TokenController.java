@@ -1,4 +1,4 @@
-package controllers;
+package controller;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
@@ -11,6 +11,7 @@ import exceptions.NotAuthorizedException;
 import io.javalin.http.HttpStatus;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -18,6 +19,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TokenController {
+
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static String timestamp = dateFormat.format(new Date());
+
     private static Set<String> blacklistedTokens = new HashSet<>();
     public static void invalidateToken(String token) {
         blacklistedTokens.add(token);
@@ -49,7 +54,7 @@ public class TokenController {
 
         } catch (JOSEException e) {
             e.printStackTrace();
-            throw new APIException(500, "Could not create token");
+            throw new APIException(500, "Could not create token", timestamp);
         }
     }
     public static UserDTO verifyToken(String token){
@@ -65,7 +70,7 @@ public class TokenController {
             }
         } catch (ParseException | JOSEException | NotAuthorizedException e) {
             e.printStackTrace();
-            throw new APIException(HttpStatus.UNAUTHORIZED.getCode(), "Unauthorized. Could not verify token");
+            throw new APIException(HttpStatus.UNAUTHORIZED.getCode(), "Unauthorized. Could not verify token", timestamp);
         }
     }
 

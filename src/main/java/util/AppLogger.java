@@ -5,39 +5,6 @@ import java.util.logging.*;
 
 public class AppLogger {
 
-//    private static final Logger logger = Logger.getLogger("AppLogger");
-//
-//    static {
-//        setupLogger();
-//    }
-//
-//    private static void setupLogger() {
-//        try {
-//            LogManager.getLogManager().reset();
-//            logger.setUseParentHandlers(false);
-//
-//            ConsoleHandler consoleHandler = new ConsoleHandler();
-//            consoleHandler.setLevel(Level.ALL);
-//            consoleHandler.setFormatter(new SimpleFormatter());
-//            logger.addHandler(consoleHandler);
-//
-//            FileHandler fileHandler = new FileHandler("logs/app.log", true);
-//            fileHandler.setLevel(Level.WARNING);
-//            fileHandler.setFormatter(new SimpleFormatter());
-//            logger.addHandler(fileHandler);
-//
-//        } catch (SecurityException | IOException e) {
-//            logger.log(Level.ALL, "Fejl ved opsætning af logsystem", e);
-//        }
-//    }
-//
-//    public static Logger getLogger() {
-//        return logger;
-//    }
-
-
-//  Her er koden modificeret så KUN den meddelelse jeg defineres bliver logget. se definitionen i main
-
     private static final Logger logger = Logger.getLogger("AppLogger");
 
     static {

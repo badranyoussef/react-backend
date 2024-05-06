@@ -1,41 +1,40 @@
 ### 1.5 creating a http file to test endpoints
-
-POST http://localhost:7070/healthstore/api/healthproducts/initiate/
-
-
 ### get all products
-GET http://localhost:7070/healthstore/api/healthproducts/
+GET http://localhost:7070/carshop/api/cars/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWRyYW5AeW91c3NlZi5kayIsInBob25lIjozMDExNzE5NSwicm9sZXMiOiJhZG1pbiIsImlzcyI6IkV4YW1lbiIsIm5hbWUiOiJ5b3Vzc2VmIiwiaWQiOjEsImV4cCI6MTcxMzI2Mzg1MCwiZW1haWwiOiJiYWRyYW5AeW91c3NlZi5kayJ9.pVyW7_1UsDZeYjL40A3h-dAr5o7RuRldMgrZo6AtZDw
 
-###
+###Get car by ID
+GET http://localhost:7070/carshop/api/cars/10
 
-GET http://localhost:7070/healthstore/api/healthproducts/15
+###Get cars by seller ID
+GET http://localhost:7070/carshop/api/cars/sellers/2
 
-###
-
-POST http://localhost:7070/healthstore/api/healthproducts/
-
-{
-  "category": "Vitamin",
-  "name": "Vitamin D3 5000 IU",
-  "price": 15.99,
-  "calories": 0,
-  "description": "Hjælper med at opretholde sunde knogler og tænder."
-}
-
-###
-
-
-PUT http://localhost:7070/healthstore/api/healthproducts/10
+###Create a car
+POST http://localhost:7070/carshop/api/cars/
 
 {
-  "category": "testing cat change",
-  "name": "Vitamin D3 5000 IU",
-  "price": 15.99,
-  "calories": 0,
-  "description": "Hjælper med at opretholde sunde knogler og tænder.",
-  "expireDate": "2024-12-31"
+  "brand": "NEW BRAND",
+  "model": "VIVO",
+  "make": "Denmark",
+  "firstRegistrationDate": "2024-04-04",
+  "price": 20000.0,
+  "year": 2024
 }
 
-###
+### Update car
+PUT http://localhost:7070/carshop/api/cars/12
 
-DELETE http://localhost:7070/healthstore/api/healthproducts/10
+{
+  "brand": "NEW BRAND",
+  "model": "VIVO2000",
+  "make": "Denmark",
+  "firstRegistrationDate": "2024-04-04",
+  "price": 20000.0,
+  "year": 2024
+}
+
+### Add car to seller
+PUT http://localhost:7070/carshop/api/cars/add_to_seller/2/16
+
+###Delete car
+DELETE http://localhost:7070/carshop/api/cars/13

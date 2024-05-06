@@ -3,16 +3,20 @@ GET http://localhost:7070/carshop/api/users
 Authorization: Bearer
 
 ### Get a single user.
-GET http://localhost:7070/carshop/api/users/874
+GET http://localhost:7070/carshop/api/users/1
 
 ### Create a new user
-POST http://localhost:7070/api/users
+POST http://localhost:7070/carshop/api/users
 
 {
+"name": "hans",
+"email": "badran@youssef.dk",
+"password": "1234qwer",
+"phone": 30117195
 }
 
 ### Update a user
-PUT http://localhost:7007/api/users/1
+PUT http://localhost:7070/api/users/1
 
 {
 }

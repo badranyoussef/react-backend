@@ -1,8 +1,8 @@
 package rest.routes;
 
-import controllers.AuthController;
-import daos.AuthDAO;
-import daos.UserDAO;
+import controller.AuthController;
+import dao.AuthDAO;
+import dao.UserDAO;
 import exceptions.APIException;
 import io.javalin.apibuilder.EndpointGroup;
 import jakarta.persistence.EntityManagerFactory;
@@ -58,11 +58,6 @@ public class AuthenticationRoutes {
                         }
                         , Role.ANYONE
                 );
-                //todo: not done
-                //request with email
-                //create new temporary token and route from that token
-                //response with that temporary token
-                //let user post new password, unless token is expired
                 post("/reset-password", ctx -> {
                     try {
                         AuthController.resetPassword(authDAO).handle(ctx);

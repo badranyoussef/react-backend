@@ -2,7 +2,7 @@ package controller;
 
 import io.javalin.http.Handler;
 
-public interface IHealthProductController {
+public interface IController {
     Handler getAll();
     Handler getById();
     Handler create();
