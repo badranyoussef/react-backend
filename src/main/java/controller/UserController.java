@@ -6,6 +6,7 @@ import exceptions.APIException;
 import io.javalin.http.Handler;
 import persistence.model.User;
 
+import javax.security.auth.callback.CallbackHandler;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -67,5 +68,18 @@ public class UserController {
             }
         };
 
+    }
+
+    public static Handler updateUser(UserDAO userDAO) {
+        return ctx ->{
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            User user = ctx.bodyAsClass(User.class);
+            if(user != null){
+                User updatedUser = (User) userDAO.update(user);
+                ctx.json(new UserDTO(updatedUser));
+            }else {
+                throw new APIException(404, "Information wasn't filled out correct", timestamp);
+            }
+        };
     }
 }

@@ -56,6 +56,19 @@ public class UserRoutes {
                     }
                     , Role.ANYONE
             );
+
+            // update car
+            put("/{id}", ctx ->
+                {
+                    try {
+                        UserController.updateUser(userDAO).handle(ctx);
+                    } catch (APIException e) {
+                        ctx.status(e.getStatusCode()).result(e.getMessage());
+                    }
+                }
+                    , Role.ANYONE
+            );
+
         });
     }
 }
