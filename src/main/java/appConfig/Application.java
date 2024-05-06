@@ -34,7 +34,7 @@ public class Application {
     private Application() {
         app = Javalin.create(config -> {
             config.http.defaultContentType = "application/json";
-            config.routing.contextPath = "/carshop/api";
+            config.routing.contextPath = "/api";
         });
     }
 
