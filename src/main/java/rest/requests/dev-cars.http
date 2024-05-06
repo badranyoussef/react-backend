@@ -1,0 +1,41 @@
+### 1.5 creating a http file to test endpoints
+
+POST http://localhost:7070/healthstore/api/healthproducts/initiate/
+
+
+### get all products
+GET http://localhost:7070/healthstore/api/healthproducts/
+
+###
+
+GET http://localhost:7070/healthstore/api/healthproducts/15
+
+###
+
+POST http://localhost:7070/healthstore/api/healthproducts/
+
+{
+  "category": "Vitamin",
+  "name": "Vitamin D3 5000 IU",
+  "price": 15.99,
+  "calories": 0,
+  "description": "Hjælper med at opretholde sunde knogler og tænder."
+}
+
+###
+
+
+PUT http://localhost:7070/healthstore/api/healthproducts/10
+
+{
+  "category": "testing cat change",
+  "name": "Vitamin D3 5000 IU",
+  "price": 15.99,
+  "calories": 0,
+  "description": "Hjælper med at opretholde sunde knogler og tænder.",
+  "expireDate": "2024-12-31"
+}
+
+###
+
+DELETE http://localhost:7070/healthstore/api/healthproducts/10
