@@ -35,14 +35,8 @@ public class Application {
         app = Javalin.create(config -> {
             config.http.defaultContentType = "application/json";
             config.routing.contextPath = "/api";
-
-            //tillad
-            config.plugins.enableCors(cors -> {
-                cors.add(it -> {
-                    it.anyHost();
-                });
-            });
         });
+
     }
 
     public static Application getInstance() {
@@ -134,8 +128,16 @@ public class Application {
         return instance;
     }
 
-//    public Application grantAccess() {
-//    }
+    public Application grantAccessAnyHost() {
+        app.updateConfig(config -> {
+           config.plugins.enableCors(cors ->{
+               cors.add(it -> {
+                   it.anyHost();
+               });
+           });
+        });
+        return instance;
+    }
 
 
     public void stopServer() {
