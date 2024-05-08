@@ -21,7 +21,7 @@ public class Main {
         //1.1 creating java-project using javalin framework
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
-        carShopApp.grantAccessAnyHost(); // <-- Tillader alle adgang til serverens ressourcer... Dette blev brugt i forbindelse at få adgang fra frontend localhost til server
+        carShopApp.grantAccessToHost("http://localhost:5173"); // <-- Tillader alle adgang til serverens ressourcer... Dette blev brugt i forbindelse at få adgang fra frontend localhost til server
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());

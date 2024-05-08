@@ -128,11 +128,11 @@ public class Application {
         return instance;
     }
 
-    public Application grantAccessAnyHost() {
+    public Application grantAccessToHost(String host) {
         app.updateConfig(config -> {
            config.plugins.enableCors(cors ->{
                cors.add(it -> {
-                   it.anyHost();
+                   it.allowHost(host);
                });
            });
         });
