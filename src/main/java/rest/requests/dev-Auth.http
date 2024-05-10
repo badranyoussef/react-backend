@@ -1,5 +1,5 @@
 ### User login
-POST http://localhost:7070/carshop/api/auth/login
+POST http://localhost:7075/api/auth/login
 
 {
 "email":"badran@youssef.dk",
@@ -7,17 +7,17 @@ POST http://localhost:7070/carshop/api/auth/login
 }
 
 ### Register new user
-POST http://localhost:7070/carshop/api/auth/register
+POST http://localhost:7075/api/auth/register
 
 {
 "name": "hans",
-"email": "badran@youssef.dk",
+"email": "an@youssef.dk",
 "password": "1234qwer",
 "phone": 30117195
 }
 
 ### Update a user
-PUT http://localhost:7070/carshop/api/users/873
+PUT http://localhost:7075/api/users/873
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYW5zQG1haWwuY29tIiwicGhvbmUiOjEyMzQ1Njc4LCJyb2xlcyI6InN0dWRlbnQsYWRtaW4iLCJpc3MiOiJUZWFtTEFIWSIsIm5hbWUiOiJIYW5zIiwiaWQiOjg3MywiZXhwIjoxNzEyNTYzMDEyLCJlbWFpbCI6ImhhbnNAbWFpbC5jb20ifQ.2k1J0Lw-9O1_Q6LgeY_WOGdqXEIri2qwQYxTX_LTdsc
 
 {

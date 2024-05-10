@@ -26,17 +26,8 @@ public class Main {
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
         carShopApp.setRoute(authRoutes.getAuthRoutes());
-        carShopApp.setRoute(authRoutes.authBefore());
+        carShopApp.setRoute(authRoutes.authBefore()); // --> ved createUser er alt ok men denne skaber fejl 403 forbidden. user oprettes dog
         carShopApp.checkSecurityRoles();
-
-        UserDAO dao = new UserDAO(emf);
-
-        User user = new User("hans", "test@test.dk","1234Qwer",12345678 );
-        user.setId(4);
-
-        dao.update(user);
-
-
 
     }
 }

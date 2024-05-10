@@ -35,9 +35,6 @@ public class AuthController {
                 ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail()));
             }catch (APIException e){
                 throw new APIException(e.getStatusCode(), "Wrong password", e.getTimeStamp());
-//            } catch (EntityNotFoundException | ValidationException e){
-//                ctx.status(401);
-//                ctx.json(node.put("msg", e.getMessage()));
             }
         };
     }

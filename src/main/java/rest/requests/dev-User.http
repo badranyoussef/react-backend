@@ -1,3 +1,10 @@
+
+
+
+### dev-Auth.http fremfor denne da sikkerheden på before også
+
+
+
 ### Get all user.
 GET http://localhost:7070/carshop/api/users
 Authorization: Bearer
@@ -6,23 +13,26 @@ Authorization: Bearer
 GET http://localhost:7070/carshop/api/users/1
 
 ### Create a new user
-POST http://localhost:7070/carshop/api/users
+POST http://localhost:7075/api/users/
 
 {
 "name": "hans",
-"email": "badran@youssef.dk",
+"email": "qbnbs@akj.dk",
 "password": "1234qwer",
 "phone": 30117195
 }
 
 ### Update a user
-PUT http://159.223.19.33:7075/api/users/2
+PUT http://localhost:7075/api/users/5
 
 {
-"name": "Thomas",
-"email": "badran@youssef.dk",
+"name": "Lasse",
+"email": "badran@youhbhbhbhbssef.dk",
 "password": "1234qwer",
-"phone": 30117195
+"phone": 30117195,
+"roles": [
+    "admin"
+]
 }
 
 

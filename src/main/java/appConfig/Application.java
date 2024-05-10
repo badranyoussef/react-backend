@@ -114,15 +114,17 @@ public class Application {
 
                 UserDTO user = ctx.attribute("user");
                 System.out.println("USER IN CHECK_SEC_ROLES: " + user);
-                if (user == null)
+                if (user == null) {
                     ctx.status(HttpStatus.FORBIDDEN)
                             .json(om.createObjectNode()
                                     .put("msg", "Not authorized. No username were added from the token"));
+                }
 
-                if (AuthController.authorize(user, allowedRoles))
+                if (AuthController.authorize(user, allowedRoles)) {
                     handler.handle(ctx);
-                else
-                    throw new APIException(HttpStatus.FORBIDDEN.getCode(), "Unauthorized with roles: " + allowedRoles,timestamp );
+                }else {
+                    throw new APIException(HttpStatus.FORBIDDEN.getCode(), "Unauthorized with roles: " + allowedRoles, timestamp);
+                }
             });
         });
         return instance;

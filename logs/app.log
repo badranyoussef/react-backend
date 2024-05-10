@@ -5,3 +5,5 @@ HTTP: 403 Time: 2024-04-16 12:05:18 Method: GET Path: /carshop/api/cars/ Client 
 HTTP: 403 Time: 2024-05-06 10:09:02 Method: GET Path: /carshop/api/cars/ Client IP: 127.0.0.1
 HTTP: 403 Time: 2024-05-06 10:10:32 Method: GET Path: /carshop/api/cars/ Client IP: 127.0.0.1
 HTTP: 403 Time: 2024-05-06 10:11:00 Method: GET Path: /carshop/api/cars/ Client IP: 127.0.0.1
+HTTP: 403 Time: 2024-05-10 10:39:50 Method: POST Path: /api/users Client IP: 127.0.0.1
+HTTP: 403 Time: 2024-05-10 10:56:32 Method: POST Path: /api/users/ Client IP: 127.0.0.1
