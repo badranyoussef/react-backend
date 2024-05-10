@@ -82,19 +82,6 @@ public class Application {
                     "timestamp", e.getTimeStamp().toString()
             ));
         });
-
-//        app.exception(Exception.class, (e, ctx) -> {
-//            ObjectNode node = om.createObjectNode().put("errorMessage", e.getMessage());
-//            ctx.status(500).json(node);
-//        });
-//
-//        app.error(404, ctx -> {
-//            ctx.status(404).result("Not Found");
-//        });
-//
-//        app.exception(IllegalStateException.class, (e, ctx) -> {
-//            ctx.status(400).result("Bad Request: " + e.getMessage());
-//        });
         return instance;
     }
 

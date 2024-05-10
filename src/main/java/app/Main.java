@@ -1,11 +1,8 @@
 package app;
 
 import appConfig.Application;
-import controller.UserController;
-import dao.UserDAO;
 import jakarta.persistence.EntityManagerFactory;
 import persistence.config.HibernateConfig;
-import persistence.model.User;
 import rest.routes.AuthenticationRoutes;
 import rest.routes.CarRoute;
 import rest.routes.UserRoutes;
@@ -22,7 +19,7 @@ public class Main {
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
         carShopApp.grantAccessToHost("http://localhost:5173"); // <- Tillader alle adgang til serverens ressourcer... Dette blev brugt i forbindelse at få adgang fra frontend localhost til server
-        carShopApp.grantAccessToHost("http://dat-project.dk");
+        //carShopApp.grantAccessToHost("http://dat-project.dk");
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
