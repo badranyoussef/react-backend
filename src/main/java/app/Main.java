@@ -22,12 +22,12 @@ public class Main {
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
         carShopApp.grantAccessToHost("http://localhost:5173"); // <-- Tillader alle adgang til serverens ressourcer... Dette blev brugt i forbindelse at få adgang fra frontend localhost til server
+        carShopApp.grantAccessToHost("http://dat-project.dk");
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
         carShopApp.setRoute(authRoutes.getAuthRoutes());
         carShopApp.setRoute(authRoutes.authBefore()); // --> ved createUser er alt ok men denne skaber fejl 403 forbidden. user oprettes dog
         carShopApp.checkSecurityRoles();
-
     }
 }
