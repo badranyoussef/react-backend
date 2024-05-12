@@ -129,17 +129,25 @@ public class Application {
     }
 
     public Application configureCors() {
-        app. before(ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "https://dat-project.dk:5173");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type");
+        app.before(ctx -> {
+            // Hvis den aktuelle anmodning kommer fra en kendt oprindelse, så tillad den
+            String origin = ctx.header("Origin");
+            if (origin != null && origin.equals("http://dat-project.dk:5173")) {
+                ctx.header("Access-Control-Allow-Origin", origin);
+                ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            }
         });
-        app.options ( "/*", ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "https://dat-project.dk:5173");
-            ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            ctx.header("Access-Control-Allow-Headers", "Content-Type");
+        app.options("/*", ctx -> {
+            String origin = ctx.header("Origin");
+            if (origin != null && origin.equals("http://dat-project.dk:5173")) {
+                ctx.header("Access-Control-Allow-Origin", origin);
+                ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                ctx.status(HttpStatus.NO_CONTENT);
+            }
         });
-            return instance;
+        return instance;
     }
 
 
