@@ -19,8 +19,8 @@ public class Main {
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
         //carShopApp.grantAccessToHost("http://localhost:5173"); // <- Tillader alle adgang til serverens ressourcer... Dette blev brugt i forbindelse at få adgang fra frontend localhost til server
-        carShopApp.grantAccessToHost("http://159.223.19.33:5173");
-        carShopApp.grantAccessToHost("http://dat-project.dk:5173");
+//        carShopApp.grantAccessToHost("http://159.223.19.33:5173");
+        carShopApp.configureCors(); // -> tillader www.project-dat.dk at tilgå backend
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
