@@ -130,12 +130,12 @@ public class Application {
 
     public Application configureCors() {
         app. before(ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "https://dat-project.dk");
+            ctx.header("Access-Control-Allow-Origin", "https://dat-project.dk:5173");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type");
         });
         app.options ( "/*", ctx -> {
-            ctx.header("Access-Control-Allow-Origin", "https://dat-project.dk");
+            ctx.header("Access-Control-Allow-Origin", "https://dat-project.dk:5173");
             ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             ctx.header("Access-Control-Allow-Headers", "Content-Type");
         });
