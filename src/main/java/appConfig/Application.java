@@ -132,7 +132,7 @@ public class Application {
         app.before(ctx -> {
             // Hvis den aktuelle anmodning kommer fra en kendt oprindelse, så tillad den
             String origin = ctx.header("Origin");
-            if (origin != null && origin.equals("http://dat-project.dk:5173")) {
+            if (origin != null && origin.equals("http://dat-project.dk:80")) {
                 ctx.header("Access-Control-Allow-Origin", origin);
                 ctx.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
                 ctx.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
