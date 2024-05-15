@@ -6,7 +6,7 @@ POST http://api.dat-project.dk/api/auth/login
 
 {
 "email":"b@b.b",
-"password":"12314"
+"password":"1234"
 }
 
 
