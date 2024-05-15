@@ -18,7 +18,7 @@ public class Main {
         //1.1 creating java-project using javalin framework
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
-        carShopApp.grantAccessToHost("159.223.19.33:7075");
+        carShopApp.grantAccessToHost("https://project-dat.dk");
         //carShopApp.configureCors(); // -> tillader www.project-dat.dk at tilgå backend
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
