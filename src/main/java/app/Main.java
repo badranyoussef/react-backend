@@ -19,7 +19,7 @@ public class Main {
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
         carShopApp.grantAccessToHost("https://project-dat.dk");
-        //carShopApp.configureCors(); // -> tillader www.project-dat.dk at tilgå backend
+        //carShopApp.configureCors(); // -> tillader www.project-dat.dk at tilgå backen
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
