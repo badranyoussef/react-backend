@@ -18,8 +18,8 @@ public class Main {
         //1.1 creating java-project using javalin framework
         Application carShopApp = Application.getInstance();
         carShopApp.startServer(7075);
-        carShopApp.grantAccessToHost("https://project-dat.dk");
-        //carShopApp.configureCors(); // -> tillader www.project-dat.dk at tilgå backen
+        //carShopApp.grantAccessToHost("https://project-dat.dk");
+        carShopApp.configureCors(); // -> tillader www.project-dat.dk at tilgå backen
         carShopApp.setExceptionHandlers();
         carShopApp.setRoute(routes.getCarRoutes());
         carShopApp.setRoute(userRoutes.getUserRoutes());
