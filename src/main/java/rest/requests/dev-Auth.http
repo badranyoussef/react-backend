@@ -1,8 +1,20 @@
+GET https://api.dat-project.dk/api/users/
+
+
+### User login
+POST http://api.dat-project.dk/api/auth/login
+
+{
+"email":"b@b.b",
+"password":"12314"
+}
+
+
 ### User login
 POST http://localhost:7075/api/auth/login
 
 {
-"email":"badran@youssef.dk",
+"email":"ann@youssef.dk",
 "password":"1234qwer"
 }
 
@@ -11,7 +23,7 @@ POST http://localhost:7075/api/auth/register
 
 {
 "name": "hans",
-"email": "an@youssef.dk",
+"email": "ann@youssef.dk",
 "password": "1234qwer",
 "phone": 30117195
 }

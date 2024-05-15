@@ -30,7 +30,8 @@ public class TokenController {
     public static String createToken(UserDTO user){
         String ISSUER = System.getenv("ISSUER");
         String TOKEN_EXPIRE_TIME = System.getenv("TOKEN_EXPIRE_TIME");
-        String SECRET_KEY = System.getenv("SECRET_KEY");
+        //String SECRET_KEY = System.getenv("SECRET_KEY");
+        String SECRET_KEY = System.getProperty("SECRET_KEY");
         // https://codecurated.com/blog/introduction-to-jwt-jws-jwe-jwa-jwk/
         try {
             //What needs to be stored in the token is set here, with a Claimset
