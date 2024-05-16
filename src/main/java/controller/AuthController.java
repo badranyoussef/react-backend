@@ -9,7 +9,6 @@ import dtos.UserDTO;
 import exceptions.APIException;
 import io.javalin.http.Handler;
 import io.javalin.http.HttpStatus;
-import io.javalin.validation.ValidationException;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import persistence.model.User;
@@ -32,7 +31,7 @@ public class AuthController {
                 UserDTO user = ctx.bodyAsClass(UserDTO.class);
                 User verifiedUser = authDAO.verifyUser(user.getEmail(), user.getPassword());
                 String token = TokenController.createToken(new UserDTO(verifiedUser));
-                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail()));
+                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail(), user.getRoles()));
             }catch (APIException e){
                 throw new APIException(e.getStatusCode(), "Wrong password", e.getTimeStamp());
             }
@@ -55,7 +54,7 @@ public class AuthController {
                 User user = ctx.bodyAsClass(User.class);
                 User createdUser = userDAO.create(user);
                 String token = TokenController.createToken(new UserDTO(createdUser));
-                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail()));
+                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail(), user.getRolesAsStrings()));
             } catch(EntityExistsException e){
                 ctx.status(HttpStatus.UNPROCESSABLE_CONTENT);
                 ctx.json(node.put("msg","User already exist"));

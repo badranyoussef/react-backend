@@ -32,7 +32,7 @@ public class TokenController {
         String TOKEN_EXPIRE_TIME = System.getenv("TOKEN_EXPIRE_TIME");
         //String SECRET_KEY = System.getenv("SECRET_KEY");
         //String SECRET_KEY = System.getProperty("SECRET_KEY");
-        String SECRET_KEY = "5465726d6432637344764c58774e70377958636356376b7846554d63695463585979697972485465";
+        String SECRET_KEY = "5465726d6432637344764c58774e70377958636356376b7846554d63695463585979697972485465"; // har tilføjet den direkte da det ikke virkede med at hente fra pom filen
         // https://codecurated.com/blog/introduction-to-jwt-jws-jwe-jwa-jwk/
         try {
             //What needs to be stored in the token is set here, with a Claimset

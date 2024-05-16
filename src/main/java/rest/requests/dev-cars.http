@@ -1,4 +1,9 @@
 ### 1.5 creating a http file to test endpoints
+GET http://api.dat-project.dk/api/cars
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiQGIuYiIsInBob25lIjozMDExNzE5NSwicm9sZXMiOiJhZG1pbiIsImlzcyI6ImRhdC1wcm9qZWN0LmRrIiwibmFtZSI6IkJvYiIsImlkIjoxLCJleHAiOjE3MTU4MDY0NjAsImVtYWlsIjoiYkBiLmIifQ.yZeZJf56h9YZRsPZheE9-O_b9XWyceVm55KIAXgLLc8
+
+
+
 ### get all products
 GET http://localhost:7070/carshop/api/cars/
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWRyYW5AeW91c3NlZi5kayIsInBob25lIjozMDExNzE5NSwicm9sZXMiOiJhZG1pbiIsImlzcyI6IkV4YW1lbiIsIm5hbWUiOiJ5b3Vzc2VmIiwiaWQiOjEsImV4cCI6MTcxMzI2Mzg1MCwiZW1haWwiOiJiYWRyYW5AeW91c3NlZi5kayJ9.pVyW7_1UsDZeYjL40A3h-dAr5o7RuRldMgrZo6AtZDw
