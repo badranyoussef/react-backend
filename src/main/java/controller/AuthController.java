@@ -29,9 +29,11 @@ public class AuthController {
             ObjectNode node = om.createObjectNode();
             try {
                 UserDTO user = ctx.bodyAsClass(UserDTO.class);
+
                 User verifiedUser = authDAO.verifyUser(user.getEmail(), user.getPassword());
                 String token = TokenController.createToken(new UserDTO(verifiedUser));
-                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, user.getEmail(), user.getRoles()));
+                ctx.status(HttpStatus.CREATED).json(new TokenDTO(token, verifiedUser));
+
             }catch (APIException e){
                 throw new APIException(e.getStatusCode(), "Wrong password", e.getTimeStamp());
             }
