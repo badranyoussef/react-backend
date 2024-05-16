@@ -60,7 +60,8 @@ public class TokenController {
         }
     }
     public static UserDTO verifyToken(String token){
-        String SECRET = System.getenv("SECRET_KEY");
+        //String SECRET = System.getenv("SECRET_KEY");
+        String SECRET = "5465726d6432637344764c58774e70377958636356376b7846554d63695463585979697972485465"; // har tilføjet den direkte da det ikke virkede med at hente fra pom filen
         try {
             if (blacklistedTokens.contains(token)) {
                 throw new NotAuthorizedException(403, "Token is blacklisted");

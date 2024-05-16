@@ -12,16 +12,13 @@ import io.javalin.http.HttpStatus;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import persistence.model.User;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AuthController {
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static String timestamp = dateFormat.format(new Date());
+    //private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    //private static String timestamp = dateFormat.format(new Date());
 
     private static ObjectMapper om = new ObjectMapper();
     public static Handler login(AuthDAO authDAO) {
